@@ -31,18 +31,30 @@
 
     <!-- Load real app code -->
     <script src="vendor/require.js"></script>
+</head>
+<body>
+    <div>
+        Port: <input type="text" name="port" id="port">
+        <button type="button" id="start">Start Server</button>
+        <p id="status"></p>
+        <h1 id="data">Wait...</h1>
+    </div>
     <script>
         requirejs([
             'app', 
             'vendor/jquery/dist/jquery'
         ], function () {
+            $('#start').click(function() {
+                var port = $('#port').val();
+
+                process.env.PORT = parseInt(port);
+
+                wsServer.start({
+                    onstart: onstart,
+                    ondata: ondata
+                });                
+            });            
         });
-    </script>
-</head>
-<body>
-    <div>
-        <p id="status"></p>
-        <h1 id="data">Wait...</h1>
-    </div>
+    </script>    
 </body>
 </html>

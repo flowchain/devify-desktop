@@ -50,7 +50,3 @@ var onstart = function(payload) {
 	$('#status').html("Server is at " + process.env.HOST + ":" + process.env.PORT );
 };
 
-wsServer.start({
-	onstart: onstart,
-	ondata: ondata
-});
