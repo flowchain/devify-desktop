@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>NW Boilerplate</title>
+
+    <!-- Styles -->
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="vendor/theme/css/glyphicons.css" />
+    <link rel="stylesheet" href="vendor/theme/css/style.min.css?1361377786" />
+
+    <!-- Scripts giving you few extra things in NW.js -->
+    <script src="vendor/nw-boilerplate/window_state.js"></script>
+    <script src="vendor/nw-boilerplate/context_menu.js"></script>
+    <script src="vendor/nw-boilerplate/external_links.js"></script>
+    <script src="vendor/nw-boilerplate/dev_helper.js"></script>
+    <script src="vendor/nw-boilerplate/env_config.js"></script>
+
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+
+    <script>
+        (function () {
+            var gui = require('nw.gui');
+            var win = gui.Window.get();
+
+            // Create default menu items for OSX
+            if (process.platform === 'darwin') {
+                var mb = new gui.Menu({ type: "menubar" });
+                mb.createMacBuiltin(gui.App.manifest.productName);
+                win.menu = mb;
+            }
+        }());
+    </script>
+
+    <!-- Load real app code -->
+    <script src="vendor/require.js"></script>
+    <script>
+        requirejs(['dashboard'], function (app) {});
+    </script>
+</head>
+<body>
+    <script id="itemTemplate" type="text/x-jsrender">
+        <tr class="selectable">
+            <td class="center">{{:no}}</td>
+            <td class="important"><span class="glyphicons up_arrow btn-success btn-action single"><i></i></span>{{:temperature}}</td>
+            <td class="center"><span class="label label-important">23 Jan 2013</span></td>
+            <td class="center">&euro;739.00</td>
+            <td class="right actions">
+                <a href="#" class="btn-action glyphicons eye_open btn-info"><i></i></a>
+                <a href="#" class="btn-action glyphicons pencil btn-success"><i></i></a>
+                <a href="#" class="btn-action glyphicons remove_2 btn-danger"><i></i></a>
+            </td>
+        </tr>
+    </script>
+
+    <div class="container">
+        <div class="widget widget-4">
+            <div class="widget-head">
+                <h4 class="heading">Transactions</h4>
+            </div>
+            <div class="widget-body" style="padding: 10px 0;">
+                <table class="table table-condensed table-primary table-vertical-center table-thead-simple">
+                    <thead>
+                        <tr>
+                            <th class="center" style="width: 1%">No.</th>
+                            <th>Transaction</th>
+                            <th class="center">Date</th>
+                            <th class="center">Amount</th>
+                            <th class="right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemList">
+                    </tbody>
+                </table>
+                <div class="separator top"><a href="" class="glyphicons list single"><i></i> Show all</a></div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

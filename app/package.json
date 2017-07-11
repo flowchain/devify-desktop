@@ -1,0 +1,27 @@
+{
+  "name": "nw-boilerplate",
+  "productName": "NW Boilerplate",
+  "description": "Starter for NW.js application. Out of the box ready for serious stuff.",
+  "version": "0.1.0",
+  "author": "Mr Gumby <gumby@sillywalks.com>",
+  "main": "app.html",
+  "window": {
+    "icon": "logo.png",
+    "show": true,
+    "toolbar": true,
+    "width": 1000,
+    "height": 600,
+    "min_width": 800,
+    "min_height": 400,
+    "position": "center"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "devify-server": "^2.0.6",
+    "fs-jetpack": "^0.6.4",
+    "jquery": "^3.1.1",
+    "jsrender": "^0.9.83",
+    "utils-merge": "^1.0.0",
+    "wotcity.io": "^0.9.1"
+  }
+}
